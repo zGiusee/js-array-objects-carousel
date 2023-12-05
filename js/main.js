@@ -72,4 +72,3 @@ nextBtn.addEventListener('click', function(){
 });
 
 
-
