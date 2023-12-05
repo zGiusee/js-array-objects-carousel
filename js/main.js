@@ -31,39 +31,45 @@ let prevBtn = document.getElementById('next');
 let text = document.getElementById('text');
 let title = document.getElementById('title');
 
-let i = 0;
+let currentImg = 1;
 
 // Recupero il contenitore dello slider
 let img_slide = document.getElementById('img_slide');
 
-
+console.log(images[currentImg].image)
 // Definisco i contatori ++ & --
 prevBtn.addEventListener('click', function(){
-    if(i == 0){
-        i = 4;
+
+    if(currentImg == 0){
+        currentImg = 4;
     }
 
-    i--;
+    let img = `<img src="./${images[currentImg].image}" alt="${images[currentImg].title}">`
+    let div = `<div class='position-absolute bottom-50 text-right color-white padding-text'><h2>${images[currentImg].title}</h2><h5>${images[currentImg].text}</h5></div>`
+    img_slide.innerHTML = img + div;
 
-    console.log(i);
+    
+    console.log(currentImg);
+    console.log(images[currentImg].image)
+
+    currentImg--;
 });
 
 nextBtn.addEventListener('click', function(){
-    if(i == 4){
-        i = 0;
+
+    if(currentImg == 5){
+        currentImg = 0;
     }
 
-    i++;
+    let img = `<img src="./${images[currentImg].image}" alt="${images[currentImg].title}">`
+    let div = `<div class='position-absolute bottom-50 text-right color-white padding-text'><h2>${images[currentImg].title}</h2><h5>${images[currentImg].text}</h5></div>`
+    img_slide.innerHTML = img + div;
 
-    console.log(i);
+    console.log(currentImg);
+    console.log(images[currentImg].image)
+
+    currentImg++;
 });
 
 
-images.forEach((elem, index) => {
 
-    let img = `<img src="./${elem.image}" alt="${elem.title}">`
-    
-    img_slide.innerHTML = img;
-    
-    console.log(elem, index)
-});
